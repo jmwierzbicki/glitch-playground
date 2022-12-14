@@ -14,12 +14,17 @@ import { SkillModule } from './skill/skill.module';
 import { TalentModule } from './talent/talent.module';
 import { CampaignsModule } from './campaigns/campaigns.module';
 import { GlobalModule } from './global/global.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
     GlobalModule,
     ConfigModule.forRoot(),
     // MongooseModule.forRoot(process.env.MONGODB_CONNECTION_STRING),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'frontend'),
+    }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async () => ({
