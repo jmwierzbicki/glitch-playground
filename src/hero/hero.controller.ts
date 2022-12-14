@@ -34,8 +34,8 @@ export class HeroController {
   }
 
   @Get()
-  findAll() {
-    return this.heroService.findAll();
+  async findAll(): Promise<Hero[]> {
+    return await this.heroService.findAll();
   }
 
   @Get(':id')

@@ -18,7 +18,7 @@ export class HeroService {
     @InjectModel(Campaign.name) private campaignModel: Model<Campaign>,
     private userProvider: UserProvider,
   ) {}
-  async create(createHeroDto: CreateHeroDto) {
+  async create(createHeroDto: CreateHeroDto): Promise<Hero> {
     const { campaignCode, ...hero } = createHeroDto;
     const campaign = await this.campaignModel.findOne({ code: campaignCode });
     if (!campaign) {
@@ -32,8 +32,11 @@ export class HeroService {
     return createdHero.save();
   }
 
-  findAll(): Hero[] {
-    return this.heroModel.find().populate(['owner', 'campaign', 'gameMaster']) as any as Hero[];
+  async findAll(): Promise<Hero[]> {
+    return this.heroModel
+      .find()
+      .populate(['owner', 'campaign', 'gameMaster'])
+      .exec();
   }
 
   findOne(id: number) {
