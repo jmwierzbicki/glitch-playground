@@ -64,10 +64,7 @@ export class Hero extends Document {
   notes: string;
 
   @Prop()
-  baseStatsExtensions: BaseStatsDto;
-
-  @Prop()
-  customStatsExtensions: BaseStatsDto;
+  statsDevelopment: BaseStatsDto;
 
   @Prop()
   optionalAdvancementRule: boolean;

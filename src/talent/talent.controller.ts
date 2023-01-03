@@ -1,34 +1,50 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { TalentService } from './talent.service';
 import { CreateTalentDto } from './dto/create-talent.dto';
 import { UpdateTalentDto } from './dto/update-talent.dto';
+import { Talent } from './entities/talent.entity';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { Exceptions } from '../global/exceptions';
 
+@ApiTags('Talents')
+@ApiBearerAuth()
 @Controller('talent')
 export class TalentController {
   constructor(private readonly talentService: TalentService) {}
 
   @Post()
-  create(@Body() createTalentDto: CreateTalentDto) {
-    return this.talentService.create(createTalentDto);
+  async create(@Body() createTalentDto: CreateTalentDto): Promise<Talent> {
+    return await this.talentService.create(createTalentDto);
   }
 
   @Get()
-  findAll() {
-    return this.talentService.findAll();
+  async findAll() {
+    return await this.talentService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.talentService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    return (
+      (await this.talentService.findOne(id)) ||
+      Exceptions.resourceNotFound('not found')
+    );
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTalentDto: UpdateTalentDto) {
-    return this.talentService.update(+id, updateTalentDto);
+  async update(@Param('id') id: string, @Body() updateTalentDto: UpdateTalentDto) {
+    return await this.talentService.update(id, updateTalentDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.talentService.remove(+id);
+  async remove(@Param('id') id: string) {
+    return this.talentService.remove(id);
   }
 }

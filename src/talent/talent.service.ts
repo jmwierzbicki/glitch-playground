@@ -1,26 +1,37 @@
+//   @InjectModel(Talent.name) private talentModel: Model<TalentDocument>,
 import { Injectable } from '@nestjs/common';
 import { CreateTalentDto } from './dto/create-talent.dto';
 import { UpdateTalentDto } from './dto/update-talent.dto';
+import { Talent, TalentDocument } from './entities/talent.entity';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class TalentService {
-  create(createTalentDto: CreateTalentDto) {
-    return 'This action adds a new talent';
+  constructor(
+    @InjectModel(Talent.name) private talentModel: Model<TalentDocument>,
+  ) {}
+
+  create(createTalentDto: CreateTalentDto): Promise<Talent> {
+    const createdTalent = new this.talentModel(createTalentDto);
+    return createdTalent.save();
   }
 
-  findAll() {
-    return `This action returns all talent`;
+  async findAll(): Promise<Talent[]> {
+    return this.talentModel.find({});
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} talent`;
+  async findOne(id: string): Promise<Talent> {
+    return this.talentModel.findById(id);
   }
 
-  update(id: number, updateTalentDto: UpdateTalentDto) {
-    return `This action updates a #${id} talent`;
+  async update(id: string, updateTalentDto: UpdateTalentDto): Promise<Talent> {
+    return this.talentModel.findByIdAndUpdate(id, updateTalentDto, {
+      new: true,
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} talent`;
+  remove(id: string) {
+    return this.talentModel.findByIdAndDelete(id).exec();
   }
 }

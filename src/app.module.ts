@@ -16,6 +16,7 @@ import { CampaignsModule } from './campaigns/campaigns.module';
 import { GlobalModule } from './global/global.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { MusicBotModule } from './music-bot/music-bot.module';
 
 @Module({
   imports: [
@@ -43,7 +44,7 @@ import { join } from 'path';
     SkillModule,
     TalentModule,
     CampaignsModule,
-
+    MusicBotModule,
   ],
   controllers: [AppController],
   providers: [AppService, BotService],

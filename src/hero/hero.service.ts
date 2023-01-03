@@ -3,12 +3,9 @@ import { CreateHeroDto } from './dto/create-hero.dto';
 import { UpdateHeroDto } from './dto/update-hero.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Hero, HeroDocument } from './entities/hero.entity';
+import { Hero } from './entities/hero.entity';
 import { UserProvider } from '../global/user.provider';
-import {
-  Campaign,
-  CampaignDocument,
-} from '../campaigns/entities/campaign.entity';
+import { Campaign } from '../campaigns/entities/campaign.entity';
 import { Exceptions } from '../global/exceptions';
 
 @Injectable()
