@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Req } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req } from '@nestjs/common';
 import { AppService } from './app.service';
 import {
   AttachmentBuilder,
@@ -13,6 +13,7 @@ import { ResponseBuilder } from './bot-service/response-builder';
 import { ApiBearerAuth } from '@nestjs/swagger';
 import fs from 'fs';
 import { createCanvas, loadImage } from '@napi-rs/canvas';
+import { ExportedEnums } from './enums/exported-enums.dto';
 
 @ApiBearerAuth()
 @Controller()
@@ -43,6 +44,11 @@ export class AppController {
   async helloWorld() {
     console.log('hello!');
     return 'hello';
+  }
+
+  @Get('enums')
+  exportedEnums(@Body() exportedEnums: ExportedEnums): number {
+    return 0;
   }
 
   @Get('test-bot')

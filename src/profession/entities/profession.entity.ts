@@ -4,6 +4,7 @@ import { Document, Types } from 'mongoose';
 import { BaseStatsDto } from '../../hero/dto/base-stats.dto';
 import { Skill } from '../../skill/entities/skill.entity';
 import { Talent } from '../../talent/entities/talent.entity';
+import { AdvancementSchemaDto } from '../dto/advancement-schema.dto';
 
 export type ProfessionDocument = Profession & Document;
 
@@ -16,7 +17,7 @@ export class Profession extends Document {
   description: string;
 
   @Prop()
-  statsDevelopment: BaseStatsDto;
+  statsDevelopment: AdvancementSchemaDto;
 
   @Prop({ type: [Types.ObjectId], ref: Skill.name })
   skills: Skill[];

@@ -8,6 +8,7 @@ import { Document, Types } from 'mongoose';
 import { BaseStatsDto } from '../dto/base-stats.dto';
 import { BioDataDto } from '../dto/bio-data.dto';
 import { Campaign } from '../../campaigns/entities/campaign.entity';
+import { AdvancementSchemaDto } from '../../profession/dto/advancement-schema.dto';
 
 export type HeroDocument = Hero & Document;
 @Schema()
@@ -64,8 +65,6 @@ export class Hero extends Document {
   notes: string;
 
   @Prop()
-  statsDevelopment: BaseStatsDto;
+  statsDevelopment: AdvancementSchemaDto;
 
-  @Prop()
-  optionalAdvancementRule: boolean;
 }

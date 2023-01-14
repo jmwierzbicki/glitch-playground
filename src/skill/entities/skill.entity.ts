@@ -1,5 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
+import { ApiProperty } from '@nestjs/swagger';
+import { SubskillDto } from '../dto/subskill.dto';
+
 
 export type SkillDocument = Skill & Document;
 
@@ -15,6 +18,9 @@ export class Skill extends Document {
 
   @Prop()
   subSkillName: string[];
+
+  @Prop()
+  subSkill: SubskillDto[];
 
   @Prop()
   advanced: boolean;

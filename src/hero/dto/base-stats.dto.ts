@@ -1,19 +1,37 @@
 import { ApiProperty } from '@nestjs/swagger';
+import {
+  AttributeNamesDto,
+  SecondaryAttributeNamesDto,
+} from '../../enums/attribute-names.dto';
 
-export class BaseStatsDto {
-  @ApiProperty()
-  ws: number;
-  bs: number;
-  s: number;
-  t: number;
-  ag: number;
-  int: number;
-  wp: number;
-  fel: number;
-  a: number;
-  w: number;
-  m: number;
-  mag: number;
-  ip: number;
-  fp: number;
+type AttributeNamesInterface = {
+  [key in AttributeNamesDto]: number;
+};
+
+type SecondaryAttributeNamesInterface = {
+  [key in SecondaryAttributeNamesDto]: number;
+};
+
+export interface IBaseStatsDto
+  extends AttributeNamesInterface,
+    SecondaryAttributeNamesInterface {}
+
+export class BaseStatsDto implements IBaseStatsDto {
+  WS: number;
+  BS: number;
+  S: number;
+  T: number;
+  AG: number;
+  INT: number;
+  WP: number;
+  FEL: number;
+
+  A: number;
+  W: number;
+  M: number;
+  SB: number;
+  TB: number;
+  MAG: number;
+  IP: number;
+  FP: number;
 }
