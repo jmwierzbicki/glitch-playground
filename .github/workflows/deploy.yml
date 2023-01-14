@@ -39,4 +39,4 @@ jobs:
           remote_path: /var/www/my-app/
           remote_host: ec2-52-29-75-88.eu-central-1.compute.amazonaws.com
           remote_user: ubuntu
-          remote_key: "${{ secrets.SSH_PRIVATE_KEY }}"
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
