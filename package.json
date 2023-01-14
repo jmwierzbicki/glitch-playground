@@ -26,7 +26,6 @@
   },
   "dependencies": {
     "@napi-rs/canvas": "^0.1.30",
-    "@napi-rs/canvas-linux-x64-gnu": "^0.1.30",
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^9.0.0",
