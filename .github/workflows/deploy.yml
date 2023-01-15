@@ -20,11 +20,12 @@ jobs:
         node-version: [14.x]
 
     steps:
-      - uses: actions/checkout@v2
+      - name: checkout
+        uses: actions/checkout@v2
 
 #      - run: npm ci
-      - run: ls /var/www/my-app
-        shell: bash
+#      - run: ls /var/www/my-app
+#        shell: bash
 
       - name: rsync deployments
         uses: burnett01/rsync-deployments@5.1
