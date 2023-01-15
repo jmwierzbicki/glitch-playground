@@ -23,9 +23,7 @@ jobs:
       - uses: actions/checkout@v2
 
 #      - run: npm ci
-#      - run: npm run get-env
-#      - run: npm run build
-#      - run: npm run start
+      - run: ls /var/www/my-app
         shell: bash
 
       - name: rsync deployments
