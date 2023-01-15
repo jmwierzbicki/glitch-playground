@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 cd /var/www/my-app
 ls
 pm2 stop 'npm run start'

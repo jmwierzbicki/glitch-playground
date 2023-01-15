@@ -43,4 +43,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-              bash /var/www/my-app/update.sh
+              sh /var/www/my-app/update.sh
