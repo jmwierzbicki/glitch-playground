@@ -47,6 +47,7 @@ jobs:
             source ~/.nvm/nvm.sh
             node -v
             cd /var/www/my-app
+            pm2 stop all
             npm ci
             npm run build
             pm2 restart all
