@@ -45,6 +45,7 @@ jobs:
           script: |
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
+            node -v
             cd /var/www/my-app
             pm2 stop 'npm run start'
             npm ci
