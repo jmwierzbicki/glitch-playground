@@ -49,4 +49,4 @@ jobs:
             cd /var/www/my-app
             npm ci
             npm run build
-            pm2 restart
+            pm2 restart all
