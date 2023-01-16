@@ -47,8 +47,6 @@ jobs:
             source ~/.nvm/nvm.sh
             node -v
             cd /var/www/my-app
-            pm2 stop 'npm run start'
             npm ci
             npm run build
-            pm2 start 'npm run start' --watch
-            pm2 save
+            pm2 restart
